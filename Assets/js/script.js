@@ -92,8 +92,8 @@ $(function () {
   }
 
   // TODO: Add code to display the current date in the header of the page.
-  //var dayjs = dayjs().format('dddd, MMMM D');
-  //$("#currentDay").val(dayjs);
+  // added here to remove 1 second delay of showing up
+  $("#currentDay").text(dayjs().format('dddd, MMMM D hh:mm A'));
 
   // Add code to display current time
   // make a new timer
