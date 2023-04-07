@@ -12,7 +12,7 @@ function updateTime(){
   var currentTime = dayjs().hour();
   // update currentTime for testing
   // var currentTime = 14;
-  console.log(currentTime);
+  //console.log(currentTime);
   var id = $('.container-fluid').parent();
   for (var i = startHour; i < 9 + startHour; i ++){
     var tempTimeBlock = $("#hour-" + i);
@@ -82,16 +82,16 @@ $(function () {
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
   // get storage and parse to json
-  console.log(localStorage.getItem("wds"));
+  //console.log(localStorage.getItem("wds"));
   storage = JSON.parse(localStorage.getItem("wds"));
   if (storage !== null){
-    console.log(storage);
+    //console.log(storage);
     //check all objects for values
     for (var i = 0; i < storage.length; i ++){
       if (storage[i] != ""){
-        console.log(storage[i] + " @ " + i);
+        //console.log(storage[i] + " @ " + i);
         let id = "#hour-" + (i + 1);
-        console.log(id);
+        //console.log(id);
         $(id).children().eq(1).val(storage[i]);
       }
     }
