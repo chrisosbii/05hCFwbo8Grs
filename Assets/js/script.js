@@ -98,10 +98,12 @@ $(function () {
   // Add code to display current time
   // make a new timer
   timer = setInterval(function() {
-    console.log("in timer");
-
     // update day
     $("#currentDay").text(dayjs().format('dddd, MMMM D hh:mm A'));
+    // if hour has changed and minutes == 0 then update time
+    if (dayjs().minute() == 0){
+      updateTime();
+    }
   }, 1000);
 
 });
