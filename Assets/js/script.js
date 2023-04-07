@@ -28,18 +28,29 @@ function updateTime(){
   }
 }
 
+/**
+ * Show user that something was updated. Goes away after a few seconds
+ */
+function showUpdate(){
+  var seconds = 5;
+  var notice = $("#notice");
+  notice.text("Appointment added to local storage ✔️");
+  var updateTimer = setInterval(function() {
+    seconds--;
+    if(seconds === 0) {
+      // Stops execution of action at set interval
+      clearInterval(updateTimer);
+      // Calls function to create and append image
+      notice.text("");
+    }
+
+  }, 1000);
+}
+
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 $(function () {
-  //render the values
-  //var schedule = $('.container-fluid').parent();
-  //var startHour = 9;
-  //for (var i = 0; i < 8; i ++){
-  //  var timeBlock = document.createElement('div');
-  //  timeBlock.addClass("row time-block past");
-  //}
-
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -47,16 +58,16 @@ $(function () {
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
   $(".saveBtn").on('click', function () {
-    console.log('in save');
     var id = $(this).parent();
     var key = id.attr('id');
     var info = id.children().eq(1).val();
-    console.log(key);
     let hour = key.split("-")[1];
     //update storage
     storage[+hour - 1] = info;
     //save to local storage
     localStorage.setItem("wds", JSON.stringify(storage));
+    // Show user that something was updated
+    showUpdate();
   });
 
   
