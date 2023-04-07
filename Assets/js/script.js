@@ -101,12 +101,7 @@ $(function () {
     console.log("in timer");
 
     // update day
-    $("#currentDay").text(dayjs().format('dddd, MMMM D'));
-
-    // update clock time
-    clock = dayjs().format('hh:mm A');
-    // get clock
-    $("#clock").text(clock);
+    $("#currentDay").text(dayjs().format('dddd, MMMM D hh:mm A'));
   }, 1000);
 
 });
